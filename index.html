@@ -425,14 +425,14 @@
         </button>
         <form action="#" class="form">
           <p class="userData">Оставьте свои данные, мы вам перезвоним</p>
-          <span class="formData">
             <label for="" class="formLabel"
               >Имя
               <span class="labelIcon">
                 <input type="text" name="name" id="name" class="modalIcon" />
-                <svg width="18px" height="19px" class="name">
+                <svg width="18px" height="19px" class="iconForm">
                   <use href="./images/svg/symbol-defs.svg#name"></use>
                 </svg>
+                </input>
               </span>
             </label>
             <label for="" class="formLabel"
@@ -444,18 +444,20 @@
                   id="tel"
                   class="modalIcon"
                 />
-                <svg width="18px" height="19px" class="phone">
+                <svg width="18px" height="19px" class="iconForm">
                   <use href="./images/svg/symbol-defs.svg#phone"></use>
                 </svg>
+                </input>
               </span>
             </label>
             <label for="" class="formLabel"
               >Почта
               <span class="labelIcon">
                 <input type="email" name="emai" id="email" class="modalIcon" />
-                <svg width="18px" height="19px" class="email">
+                <svg width="18px" height="19px" class="iconForm">
                   <use href="./images/svg/symbol-defs.svg#email"></use>
                 </svg>
+                </input>
               </span>
             </label>
             <label for="" class="formLabel"
@@ -469,23 +471,17 @@
               ></textarea>
             </label>
 
-            <input
-              type="checkbox"
-              name="agree"
-              id="checkbox"
-              class="checkbox"
-            />
-            <label for="checkbox" class="agreement" id="checkbox" required>
-              <span class="modalSend"
-                ><svg class="send">
-                  <use
-                    href="./images/svg/symbol-defs.svg#subscribe"
-                  ></use></svg></span
-              >Соглашаюсь с рассылкой и принимаю<a
-                class="linkAgreement"
-                href="#"
+            <label class="agreement">
+              <input
+                type="checkbox"
+                name="agree"
+                id="checkbox"
+                class="checkbox"
+              />
+              <span class="checkmark"></span></input>
+              Соглашаюсь с рассылкой и принимаю<a class="linkAgreement" href="#"
                 >Условия договора</a
-              ></label
+              ></input></label
             >
             <button type="submit" class="btnSubmit">Отправить</button>
           </span>

@@ -16,6 +16,7 @@
   --desk-aboutTeam-color: rgba(47, 48, 58, 0.8);
   --aboutCard-bacground-color: rgba(33, 150, 243, 0.9);
   --lebel-outline-color: rgba(33, 33, 33, 0.2);
+  --agreement-color: rgba(117, 117, 117, 1);
 }
 body {
   font-family: Roboto, sans-serif;
@@ -190,6 +191,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+
   background-color: var(--bacground-color-modal);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -203,12 +205,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-height: 581px;
-  min-width: 528px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 40px;
   background-color: var(--second-text-color);
 }
 .closeButton {
-  position: fixed;
+  position: absolute;
+  top: 8px;
   right: 8px;
   width: 30px;
   height: 30px;
@@ -647,80 +652,79 @@ Footer {
   font-weight: bold;
   font-size: 20px;
   line-height: 1.15;
-  margin-top: 40px;
 }
 .form {
-  display: flex;
-  flex-direction: column;
-  width: 528px;
   border-radius: 4px;
   font-size: 14px;
 }
-.formData {
-  margin-top: 12px;
-  margin-left: 40px;
-  margin-right: 40px;
-  position: relative;
-}
+
 .labelIcon {
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
   margin-top: 4px;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.labelIcon {
+  display: block;
+  margin-top: 4px;
+}
+
 .modalIcon {
-  display: flex;
   width: 100%;
   height: 40px;
   border: none;
-  outline: 1px solid var(--lebel-outline-color);
+  border: 1px solid var(--lebel-outline-color);
   border-radius: 4px;
   padding-left: 40px;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.phone {
-  position: absolute;
-  left: 12px;
-}
-.name {
-  position: absolute;
-  left: 12px;
-}
-.email {
-  position: absolute;
-  left: 12px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
 }
 
-.labelIcon:hover,
-.labelIcon:focus {
-  outline: 1px solid var(--highlight-color);
+.iconForm {
+  position: absolute;
+  left: 12px;
+  transform: translateY(50%);
+}
+
+.formLabel :hover,
+.formLabel :focus-within {
+  border-color: var(--highlight-color);
   fill: var(--highlight-color);
 }
 .formLabel {
-  display: flex;
-  flex-direction: column;
+  display: block;
   margin-top: 10px;
   font-size: 12px;
   color: var(--adress-color);
 }
 
 .textarea {
+  width: 100%;
   padding: 12px 16px;
-  margin-top: 4px;
-  border: none;
-  outline: 1px solid var(--lebel-outline-color);
+  border: 1px solid var(--lebel-outline-color);
   border-radius: 4px;
+  margin-top: 4px;
   resize: none;
+  outline: none;
 }
+.textarea::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
 .textarea:hover,
 .textarea:focus {
-  outline: 1px solid var(--highlight-color);
-  transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--highlight-color);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .checkbox {
-  display: none;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 0 !important;
+  clip: rect(0 0 0 0);
 }
 .agreement {
   display: flex;
@@ -731,33 +735,46 @@ Footer {
   text-align: center;
   margin-top: 20px;
   margin-left: 12px;
+  color: var(--agreement-color);
+}
+.checkmark {
+  width: 16px;
+  height: 15px;
+  margin-right: 8.38px;
+  border: 2px solid var(--first-text-color);
 }
 .linkAgreement {
+  margin-left: 4px;
+  position: relative;
+  text-decoration: none;
   color: var(--highlight-color);
 }
-
-.send {
-  width: 16px;
-  height: 15px;
-  display: flex;
-}
-.checkbox:checked + .agreement .modalSend {
+.linkAgreement::after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
   background-color: var(--highlight-color);
-  outline: 2px solid var(--highlight-color);
+  position: absolute;
+  bottom: 4px;
 }
-.checkbox:focus + .agreement .modalSend {
-  border-color: var(--first-text-color);
+
+.checkbox:checked + .checkmark {
+  background-color: var(--highlight-color);
+  border: 2px solid var(--highlight-color);
+  background-image: url(../images/svg/subscribe.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-clip: border-box;
 }
-.modalSend {
-  outline: 2px solid var(--first-text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 8.38px;
-  width: 16px;
-  height: 15px;
+.checkbox:focus:checked + .checkmark {
+  background-color: var(--highlight-color);
+  border: 2px solid var(--highlight-color);
 }
+
 .btnSubmit {
+  display: block;
   cursor: pointer;
   font-size: 16px;
   line-height: 1.85;
@@ -766,8 +783,11 @@ Footer {
   color: var(--second-text-color);
   padding: 10px 55px;
   border: none;
+  margin: 0 auto;
   margin-top: 30px;
   border-radius: 4px;
-  position: absolute;
-  left: 29%;
+}
+.btnSubmit:hover,
+.btnSubmit:focus {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
